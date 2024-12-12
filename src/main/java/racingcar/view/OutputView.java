@@ -9,6 +9,7 @@ public class OutputView implements OutputWriter {
     private static final String RESULT_FORMAT = "%s : %s";
     private static final String POSITION_CHAR = "-";
     private static final String SEPARATOR = ", ";
+    private static final String WINNER_FORMAT = "최종 우승자 : %s";
 
     public void displayResultTopMessage() {
         displayNewLine();
@@ -24,6 +25,6 @@ public class OutputView implements OutputWriter {
 
     public void displayWinners(List<CarInfo> winners) {
         List<String> winnersName = winners.stream().map(CarInfo::name).toList();
-        displayFormat("최종 우승자 : %s", String.join(SEPARATOR, winnersName));
+        displayFormat(WINNER_FORMAT, String.join(SEPARATOR, winnersName));
     }
 }
