@@ -1,7 +1,13 @@
 package racingcar.controller;
 
+import camp.nextstep.edu.missionutils.Randoms;
+import racingcar.domain.Car;
+import racingcar.domain.CarInfo;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RaceController {
     private final InputView inputView;
@@ -13,6 +19,26 @@ public class RaceController {
     }
 
     public void run() {
+        List<String> inputCarNames = inputView.requestCarNames();
+        List<Car> cars = new ArrayList<>();
+        for (String inputCarName : inputCarNames) {
+            cars.add(Car.of(inputCarName));
+        }
+        System.out.println(cars);
+
+        int times = inputView.requestTimes();
+        System.out.println(times);
+
+        List<CarInfo> carInfos = new ArrayList<>();
+        for (int i = 0; i < times; i++) {
+            cars.forEach(car -> {
+                int power = Randoms.pickNumberInRange(0, 9);
+                car.move(power);
+                carInfos.add(CarInfo.of(car));
+            });
+        }
+        outputView.displayResultByTime(carInfos);
+
 
     }
 }
