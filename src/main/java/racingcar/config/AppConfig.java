@@ -1,12 +1,13 @@
 package racingcar.config;
 
 import racingcar.controller.RaceController;
+import racingcar.service.RaceService;
 import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 public class AppConfig {
     public RaceController raceController() {
-        return new RaceController(inputView(), outputView());
+        return new RaceController(inputView(), outputView(), raceService());
     }
 
     private InputView inputView() {
@@ -15,5 +16,9 @@ public class AppConfig {
 
     private OutputView outputView() {
         return new OutputView();
+    }
+
+    private RaceService raceService() {
+        return new RaceService();
     }
 }

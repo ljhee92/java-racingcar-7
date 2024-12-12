@@ -8,6 +8,7 @@ import java.util.List;
 public class OutputView implements OutputWriter {
     private static final String RESULT_FORMAT = "%s : %s";
     private static final String POSITION_CHAR = "-";
+    private static final String SEPARATOR = ", ";
 
     public void displayResultByTime(List<CarInfo> carInfos) {
         displayNewLine();
@@ -18,8 +19,9 @@ public class OutputView implements OutputWriter {
     }
 
     public void displayWinners(List<CarInfo> winners) {
+        displayNewLine();
         displayMessage("최종 우승자 : ");
         List<String> winnersName = winners.stream().map(CarInfo::name).toList();
-        displayMessage(String.join(", ", winnersName));
+        displayMessage(String.join(SEPARATOR, winnersName));
     }
 }
