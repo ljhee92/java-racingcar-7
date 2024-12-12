@@ -2,6 +2,10 @@ package racingcar.util;
 
 public interface OutputWriter {
     default void displayMessage(String message) {
+        System.out.print(message);
+    }
+
+    default void displayMessageByLine(String message) {
         System.out.println(message);
     }
 

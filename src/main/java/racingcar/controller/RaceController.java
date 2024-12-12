@@ -7,6 +7,8 @@ import racingcar.view.InputView;
 import racingcar.view.OutputView;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class RaceController {
@@ -39,6 +41,20 @@ public class RaceController {
         }
         outputView.displayResultByTime(carInfos);
 
+        cars.sort((a, b) -> b.getPosition() - a.getPosition());
+        List<CarInfo> winners = new ArrayList<>();
+        Car winner = cars.getFirst();
+        winners.add(CarInfo.of(winner));
+        for (Car car : cars) {
+            if (winner.getPosition() < car.getPosition()) {
+                winners.removeFirst();
+                winners.add(CarInfo.of(car));
+            }
 
+            if (!winner.equals(car) && winner.getPosition() == car.getPosition()) {
+                winners.add(CarInfo.of(car));
+            }
+        }
+        outputView.displayWinners(winners);
     }
 }

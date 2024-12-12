@@ -13,7 +13,7 @@ public class InputView implements InputReader, OutputWriter {
     private static final Pattern TIMES = Pattern.compile("^[0-9]+$");
 
     public List<String> requestCarNames() {
-        displayMessage("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
+        displayMessageByLine("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         String input = inputMessage();
         validateCarNames(input);
         return Parser.parseToList(input);
@@ -26,7 +26,7 @@ public class InputView implements InputReader, OutputWriter {
     }
 
     public int requestTimes() {
-        displayMessage("시도할 횟수는 몇회인가요?");
+        displayMessageByLine("시도할 횟수는 몇회인가요?");
         String input = inputMessage();
         validateTimes(input);
         return Parser.parseToInt(input);

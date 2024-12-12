@@ -11,10 +11,15 @@ public class OutputView implements OutputWriter {
 
     public void displayResultByTime(List<CarInfo> carInfos) {
         displayNewLine();
-        displayMessage("실행 결과");
+        displayMessageByLine("실행 결과");
         for (CarInfo carInfo : carInfos) {
             displayFormat(RESULT_FORMAT, carInfo.name(), POSITION_CHAR.repeat(carInfo.position()));
         }
     }
 
+    public void displayWinners(List<CarInfo> winners) {
+        displayMessage("최종 우승자 : ");
+        List<String> winnersName = winners.stream().map(CarInfo::name).toList();
+        displayMessage(String.join(", ", winnersName));
+    }
 }
