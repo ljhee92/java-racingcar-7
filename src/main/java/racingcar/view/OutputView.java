@@ -23,8 +23,7 @@ public class OutputView implements OutputWriter {
     }
 
     public void displayWinners(List<CarInfo> winners) {
-        displayMessage("최종 우승자 : ");
         List<String> winnersName = winners.stream().map(CarInfo::name).toList();
-        displayMessage(String.join(SEPARATOR, winnersName));
+        displayFormat("최종 우승자 : %s", String.join(SEPARATOR, winnersName));
     }
 }
