@@ -37,8 +37,11 @@ public class RaceController {
     }
 
     private void race(List<Car> cars, int times) {
-        List<CarInfo> carInfos = raceService.getAfterRaceCarInfos(cars, times);
-        outputView.displayResultByTime(carInfos);
+        outputView.displayResultTopMessage();
+        for (int i = 0; i < times; i++) {
+            List<CarInfo> carInfos = raceService.getAfterRaceCarInfos(cars);
+            outputView.displayResultByTime(carInfos);
+        }
     }
 
     private void judgeWinners(List<Car> cars) {

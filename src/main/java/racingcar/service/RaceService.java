@@ -11,15 +11,13 @@ public class RaceService {
     private static final int MIN_RANDOM_NUMBER = 0;
     private static final int MAX_RANDOM_NUMBER = 9;
 
-    public List<CarInfo> getAfterRaceCarInfos(List<Car> cars,int times) {
+    public List<CarInfo> getAfterRaceCarInfos(List<Car> cars) {
         List<CarInfo> carInfos = new ArrayList<>();
-        for (int i = 0; i < times; i++) {
-            cars.forEach(car -> {
-                int power = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
-                car.move(power);
-                carInfos.add(CarInfo.of(car));
-            });
-        }
+        cars.forEach(car -> {
+            int power = Randoms.pickNumberInRange(MIN_RANDOM_NUMBER, MAX_RANDOM_NUMBER);
+            car.move(power);
+            carInfos.add(CarInfo.of(car));
+        });
         return carInfos;
     }
 
